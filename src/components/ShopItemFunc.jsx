@@ -2,21 +2,23 @@ import React from "react";
 
 import PropTypes from "prop-types";
 
-export default function ShopItemFunc(props) {
+export default function ShopItemFunc({
+  item: { brand, title, description, descriptionFull, currency, price },
+}) {
   return (
     <div className="main-content">
-      <h2>{props.item.brand}</h2>
-      <h1>{props.item.title}</h1>
-      <h3>{props.item.description}</h3>
-      <div className="description">{props.item.descriptionFull}</div>
+      <h2>{brand}</h2>
+      <h1>{title}</h1>
+      <h3>{description}</h3>
+      <div className="description">{descriptionFull}</div>
       <div className="highlight-window mobile">
         <div className="highlight-overlay"></div>
       </div>
       <div className="divider"></div>
       <div className="purchase-info">
         <div className="price">
-          {props.item.currency}
-          {props.item.price}
+          {currency}
+          {price}
         </div>
         <button>Добавить в корзину</button>
       </div>
@@ -25,5 +27,10 @@ export default function ShopItemFunc(props) {
 }
 
 ShopItemFunc.propTypes = {
-  props: PropTypes.object,
+  brand: PropTypes.string,
+  title: PropTypes.string,
+  description: PropTypes.string,
+  descriptionFull: PropTypes.string,
+  currency: PropTypes.string,
+  price: PropTypes.number,
 };
